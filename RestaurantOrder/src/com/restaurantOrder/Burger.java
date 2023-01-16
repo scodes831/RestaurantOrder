@@ -6,17 +6,16 @@ import java.util.Scanner;
 public class Burger extends MenuItem {
 
 	private String cookingPreference;
-	private ArrayList<String> toppings;
+	private ArrayList<String> toppings = new ArrayList<String>();
 	private String bunType;
 	
-	public void showBurgerOptions(Burger burger) throws Exception {
-		chooseCookingPreference(burger);
-		chooseBun(burger);
-		chooseToppings(burger);	
+	public void showBurgerOptions(Burger burger, Scanner in) throws Exception {
+		chooseCookingPreference(burger, in);
+		chooseBun(burger, in);
+		chooseToppings(burger, in);	
 	}
 
-	private void chooseToppings(Burger burger) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void chooseToppings(Burger burger, Scanner in) throws Exception {
 		System.out.println("Select burger toppings (press 0 when finished):\n1 - Ketchup\n2 - Mustard\n3 - Mayo\n4 - American Cheese\n5 - Swiss Cheese"
 				+ "\n6 - Onion\n7 - Pickles\n8 - Tomato");
 		int selection = in.nextInt();
@@ -41,8 +40,7 @@ public class Burger extends MenuItem {
 		} 
 	}
 
-	private void chooseBun(Burger burger) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void chooseBun(Burger burger, Scanner in) throws Exception {
 		System.out.println("Select bun type:\n1 - Brioche\n2 - Wheat\n3 - Lettuce\n4 - None");
 		int selection = in.nextInt();
 		if (selection == 1) {
@@ -59,8 +57,7 @@ public class Burger extends MenuItem {
 		
 	}
 
-	private void chooseCookingPreference(Burger burger) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void chooseCookingPreference(Burger burger, Scanner in) throws Exception {
 		System.out.println("Select cooking preference:\n1 - Pink\n2 - No Pink");
 		int selection = in.nextInt();
 		if (selection == 1) {

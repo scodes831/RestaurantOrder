@@ -6,18 +6,17 @@ import java.util.Scanner;
 public class Pizza extends MenuItem {
 
 	private String size;
-	private ArrayList<String> toppings;
+	private ArrayList<String> toppings = new ArrayList<String>();
 	private String crust;
 
-	public void showPizzaOptions(Pizza pizza) throws Exception {
-		choosePizzaSize(pizza);
-		choosePizzaCrust(pizza);
-		choosePizzaToppings(pizza);
+	public void showPizzaOptions(Pizza pizza, Scanner in) throws Exception {
+		choosePizzaSize(pizza, in);
+		choosePizzaCrust(pizza, in);
+		choosePizzaToppings(pizza, in);
 	}
 
-	private void choosePizzaSize(Pizza pizza) throws Exception {
-		Scanner in = new Scanner(System.in);
-		System.out.println("Select pizza size:\n1 - Small\n2 - Medium\n3 - Large");
+	private void choosePizzaSize(Pizza pizza, Scanner in) throws Exception {
+		System.out.println("Select pizza size:\n1 - Small.....$5\n2 - Medium....$7\n3 - Large.....$10");
 		int selection = in.nextInt();
 		if (selection == 1) {
 			pizza.setSize("Small");
@@ -31,8 +30,7 @@ public class Pizza extends MenuItem {
 
 	}
 
-	private void choosePizzaCrust(Pizza pizza) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void choosePizzaCrust(Pizza pizza, Scanner in) throws Exception {
 		System.out.println("Select type of crust:\n1 - Thin\n2 - Deep Dish");
 		int selection = in.nextInt();
 		if (selection == 1) {
@@ -44,11 +42,11 @@ public class Pizza extends MenuItem {
 		}
 	}
 
-	private void choosePizzaToppings(Pizza pizza) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void choosePizzaToppings(Pizza pizza, Scanner in) throws Exception {
+		
 		System.out.println(
 				"Select toppings: (press 0 when finished)\n1 - Cheese\n2 - Pepperoni (+$2)\n3 - Sausage (+$2)\n4 - Chicken (+$2)\n5 - Bell Peppers"
-						+ "\n6 - Olives\nExtra Cheese (+$1)");
+						+ "\n6 - Olives\n7 - Extra Cheese (+$1)");
 		int selection = in.nextInt();
 		if (selection == 1) {
 			pizza.getToppings().add("Cheese");

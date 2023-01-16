@@ -5,16 +5,15 @@ import java.util.Scanner;
 
 public class Salad extends MenuItem {
 
-	private ArrayList<String> toppings;
+	private ArrayList<String> toppings = new ArrayList<String>();
 	private String dressing;
 
-	public void showSaladOptions(Salad salad) throws Exception {
-		chooseSaladToppings(salad);
-		chooseSaladDressing(salad);
+	public void showSaladOptions(Salad salad, Scanner in) throws Exception {
+		chooseSaladToppings(salad, in);
+		chooseSaladDressing(salad, in);
 	}
 
-	private void chooseSaladDressing(Salad salad) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void chooseSaladDressing(Salad salad, Scanner in) throws Exception {
 		System.out.println("Select salad dressing:\n1 - Ranch\n2 - Caesar\n3 - Italian\n4 - None");
 		int selection = in.nextInt();
 		if (selection == 1) {
@@ -31,8 +30,7 @@ public class Salad extends MenuItem {
 		
 	}
 
-	private void chooseSaladToppings(Salad salad) throws Exception {
-		Scanner in = new Scanner(System.in);
+	private void chooseSaladToppings(Salad salad, Scanner in) throws Exception {
 		System.out.println("Select salad toppings (press 0 when finished):\n1 - Tomatoes\n2 - Onions\n3 - Bell Peppers\n4 - Olives\n5 - Cucumbers"
 				+ "\n6 - Carrots\n7 - Mushrooms\n8 - Feta Cheese (+$1)\n9 - Cheddar Cheese (+$1)");
 		int selection = in.nextInt();
