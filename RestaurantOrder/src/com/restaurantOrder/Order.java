@@ -26,7 +26,6 @@ public class Order {
 
 	private int generateOrderNumber() {
 		int[] numArr = new int[9];
-		int num = 0;
 		for (int i = 0; i < numArr.length; i++) {
 			numArr[i] = (int) Math.random() * 10;
 		}
