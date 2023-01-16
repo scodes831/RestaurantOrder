@@ -47,7 +47,7 @@ public class Pizza extends MenuItem {
 	private void choosePizzaToppings(Pizza pizza) throws Exception {
 		Scanner in = new Scanner(System.in);
 		System.out.println(
-				"Select toppings: (press x when finished)\n1 - Cheese\n2 - Pepperoni (+$2)\n3 - Sausage (+$2)\n4 - Chicken (+$2)\n5 - Bell Peppers"
+				"Select toppings: (press 0 when finished)\n1 - Cheese\n2 - Pepperoni (+$2)\n3 - Sausage (+$2)\n4 - Chicken (+$2)\n5 - Bell Peppers"
 						+ "\n6 - Olives\nExtra Cheese (+$1)");
 		int selection = in.nextInt();
 		if (selection == 1) {
