@@ -11,6 +11,7 @@ public class Order {
 	private LocalDate orderDate;
 	private LocalTime orderTime;
 	private String orderedBy;
+	private String orderType;
 	private ArrayList<MenuItem> orderItems;
 	
 	private BigDecimal orderSubTotal;
@@ -64,6 +65,12 @@ public class Order {
 	}
 	public void setOrderItems(ArrayList<MenuItem> orderItems) {
 		this.orderItems = orderItems;
+	}
+	public String getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 
 }
