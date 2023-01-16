@@ -10,10 +10,9 @@ public class UserPrompts {
 		int selection = in.nextInt();
 		if (selection == 1) {
 			order.setOrderType("Dine In");
-		} else  {
+		} else {
 			order.setOrderType("Takeout");
 		}
 	}
-	
-	
+
 }
