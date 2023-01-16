@@ -17,7 +17,7 @@ public class UserPrompts {
 	public static void askOrderItems(Order order, Scanner in) throws Exception {
 		boolean selectionError = false;
 		do {
-			System.out.println("Please select an item (press 0 when finished):\n1 - Pizza.....$8\n2 - Burger....$10\n3 - Salad.....$7");
+			System.out.println("Please select an item (press 0 when finished):\n1 - Pizzas\n2 - Burgers\n3 - Salads");
 			int selection = in.nextInt();
 			if (selection == 1) {
 				Pizza pizza = new Pizza();
