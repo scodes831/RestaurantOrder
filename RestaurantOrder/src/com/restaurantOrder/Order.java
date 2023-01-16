@@ -18,7 +18,7 @@ public class Order {
 	private BigDecimal orderTip;
 	private BigDecimal orderTotal;
 	
-	Order () {
+	public Order () {
 		this.orderNumber = generateOrderNumber();
 		this.orderDate = LocalDate.now();
 		this.orderTime = LocalTime.now();
