@@ -63,12 +63,14 @@ public class Pizza extends MenuItem {
 				pizza.getToppings().add("Olives");
 			} else if (selection == 7) {
 				pizza.getToppings().add("Extra Cheese");
+			} else if (selection == 0 && pizza.getToppings().size() == 0) {
+				System.out.println("You must add at least 1 topping.");
 			} else if (selection == 0) {
 				System.out.println("Toppings have been added.");
 			} else {
 				throw new Exception("Please enter a valid selection.");
 			}
-		} while (selection != 0);
+		} while ((selection != 0) || (pizza.getToppings().size() < 1));
 
 		confirmPizza(pizza);
 	}
