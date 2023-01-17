@@ -93,9 +93,13 @@ public class Pizza extends MenuItem {
 				toppingsStr.append(", ");
 			}
 		}
+		
+		String desc = new String(pizza.getSize().toLowerCase() + " " + pizza.getCrust().toLowerCase()
+				+ " crust pizza with " + toppingsStr.toString());
+		
+		pizza.setDescription(desc);
 
-		System.out.println("You have added a " + pizza.getSize().toLowerCase() + " " + pizza.getCrust().toLowerCase()
-				+ " crust pizza with " + toppingsStr.toString() + " to your order");
+		System.out.println("You have added " + desc + " to your order.");
 	}
 
 	public String getSize() {
