@@ -8,36 +8,73 @@ public class Burger extends MenuItem {
 	private String cookingPreference;
 	private ArrayList<String> toppings = new ArrayList<String>();
 	private String bunType;
-	
+
 	public void showBurgerOptions(Burger burger, Scanner in) throws Exception {
 		chooseCookingPreference(burger, in);
 		chooseBun(burger, in);
-		chooseToppings(burger, in);	
+		chooseToppings(burger, in);
 	}
 
 	private void chooseToppings(Burger burger, Scanner in) throws Exception {
-		System.out.println("Select burger toppings (press 0 when finished):\n1 - Ketchup\n2 - Mustard\n3 - Mayo\n4 - American Cheese\n5 - Swiss Cheese"
-				+ "\n6 - Onion\n7 - Pickles\n8 - Tomato");
-		int selection = in.nextInt();
-		if (selection == 1) {
-			burger.getToppings().add("Ketchup");
-		} else if (selection == 2) {
-			burger.getToppings().add("Mustard");
-		} else if (selection == 3) {
-			burger.getToppings().add("Mayo");
-		} else if (selection == 4) {
-			burger.getToppings().add("American Cheese");
-		} else if (selection == 5) {
-			burger.getToppings().add("Swiss Cheese");
-		} else if (selection == 6) {
-			burger.getToppings().add("Onion");
-		} else if (selection == 7) {
-			burger.getToppings().add("Pickles");
-		} else if (selection == 8) {
-			burger.getToppings().add("Tomato");
+		int selection;
+		do {
+			System.out.println(
+					"Select burger toppings (press 0 when finished):\n1 - Ketchup\n2 - Mustard\n3 - Mayo\n4 - American Cheese\n5 - Swiss Cheese"
+							+ "\n6 - Onion\n7 - Pickles\n8 - Tomato");
+			selection = in.nextInt();
+			if (selection == 1) {
+				burger.getToppings().add("Ketchup");
+			} else if (selection == 2) {
+				burger.getToppings().add("Mustard");
+			} else if (selection == 3) {
+				burger.getToppings().add("Mayo");
+			} else if (selection == 4) {
+				burger.getToppings().add("American Cheese");
+			} else if (selection == 5) {
+				burger.getToppings().add("Swiss Cheese");
+			} else if (selection == 6) {
+				burger.getToppings().add("Onion");
+			} else if (selection == 7) {
+				burger.getToppings().add("Pickles");
+			} else if (selection == 8) {
+				burger.getToppings().add("Tomato");
+			} else if (selection == 0) {
+				System.out.println("Toppings have been added.");
+			} else {
+				throw new Exception("Please enter a valid selection.");
+			}
+
+		} while (selection != 0);
+
+		confirmBurger(burger);
+
+	}
+
+	public void confirmBurger(Burger burger) {
+		StringBuilder toppingsStr = new StringBuilder();
+
+		if (burger.getToppings().size() == 0) {
+			toppingsStr.append("Plain");
 		} else {
-			throw new Exception("Please enter a valid selection.");
-		} 
+			for (int i = 0; i < burger.getToppings().size(); i++) {
+				toppingsStr.append(burger.getToppings().get(i).toLowerCase());
+
+				if (burger.getToppings().size() == 1) {
+					continue;
+				} else if (burger.getToppings().size() == 2 && i == 0) {
+					toppingsStr.append(" and ");
+				} else if (burger.getToppings().size() == 2 && i == 1) {
+					continue;
+				} else if (i == burger.getToppings().size() - 2) {
+					toppingsStr.append(", and ");
+				} else if (i != burger.getToppings().size() - 1) {
+					toppingsStr.append(", ");
+				}
+			}
+		}
+
+		System.out.println("You have added a " + toppingsStr.toString().toLowerCase() + " burger on a "
+				+ burger.getBunType().toLowerCase() + " bun, cooked to " + burger.getCookingPreference().toLowerCase());
 	}
 
 	private void chooseBun(Burger burger, Scanner in) throws Exception {
@@ -54,7 +91,7 @@ public class Burger extends MenuItem {
 		} else {
 			throw new Exception("Please enter a valid selection.");
 		}
-		
+
 	}
 
 	private void chooseCookingPreference(Burger burger, Scanner in) throws Exception {
@@ -92,7 +129,5 @@ public class Burger extends MenuItem {
 	public void setBunType(String bunType) {
 		this.bunType = bunType;
 	}
-
-	
 
 }
