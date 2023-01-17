@@ -21,12 +21,15 @@ public class UserPrompts {
 			int selection = in.nextInt();
 			if (selection == 1) {
 				Pizza pizza = new Pizza();
+				order.getOrderItems().add(pizza);
 				pizza.showPizzaOptions(pizza, in);
 			} else if (selection == 2) {
 				Burger burger = new Burger();
+				order.getOrderItems().add(burger);
 				burger.showBurgerOptions(burger, in);
 			} else if (selection == 3) {
 				Salad salad = new Salad();
+				order.getOrderItems().add(salad);
 				salad.showSaladOptions(salad, in);
 			} else if (selection == 0) {
 				System.out.println("Items have been added.");
@@ -34,7 +37,6 @@ public class UserPrompts {
 				selectionError = true;
 				throw new Exception("Please choose a valid selection.");
 			}
-
 		} while (selectionError);
 	}
 
