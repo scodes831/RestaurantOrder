@@ -88,7 +88,10 @@ public class Salad extends MenuItem {
 			}
 		}
 		
-		System.out.println("You have added a " + toppingsStr.toString().toLowerCase() + " salad with " + salad.getDressing().toLowerCase() + " dressing.");
+		String desc = new String(toppingsStr.toString().toLowerCase() + " salad with " + salad.getDressing().toLowerCase() + " dressing.");
+		salad.setDescription(desc);
+		
+		System.out.println("You have added a " + desc);
 	}
 
 	public String getDressing() {
