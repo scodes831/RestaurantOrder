@@ -72,9 +72,12 @@ public class Burger extends MenuItem {
 				}
 			}
 		}
-
-		System.out.println("You have added a " + toppingsStr.toString().toLowerCase() + " burger on a "
+		
+		String desc = new String(toppingsStr.toString().toLowerCase() + " burger on a "
 				+ burger.getBunType().toLowerCase() + " bun, cooked to " + burger.getCookingPreference().toLowerCase());
+		burger.setDescription(desc);
+
+		System.out.println("You have added a " + desc);
 	}
 
 	private void chooseBun(Burger burger, Scanner in) throws Exception {
