@@ -9,8 +9,8 @@ public class Salad extends MenuItem {
 	private String dressing;
 
 	public void showSaladOptions(Salad salad, Scanner in) throws Exception {
-		chooseSaladToppings(salad, in);
 		chooseSaladDressing(salad, in);
+		chooseSaladToppings(salad, in);
 	}
 
 	private void chooseSaladDressing(Salad salad, Scanner in) throws Exception {
@@ -27,34 +27,68 @@ public class Salad extends MenuItem {
 		} else {
 			throw new Exception("Please enter a valid selection.");
 		}
-		
+
 	}
 
 	private void chooseSaladToppings(Salad salad, Scanner in) throws Exception {
-		System.out.println("Select salad toppings (press 0 when finished):\n1 - Tomatoes\n2 - Onions\n3 - Bell Peppers\n4 - Olives\n5 - Cucumbers"
-				+ "\n6 - Carrots\n7 - Mushrooms\n8 - Feta Cheese (+$1)\n9 - Cheddar Cheese (+$1)");
-		int selection = in.nextInt();
-		if (selection == 1) {
-			salad.getToppings().add("Tomatoes");
-		} else if (selection == 2) {
-			salad.getToppings().add("Onions");
-		} else if (selection == 3) {
-			salad.getToppings().add("Bell Peppers");
-		} else if (selection == 4) {
-			salad.getToppings().add("Olives");
-		} else if (selection == 5) {
-			salad.getToppings().add("Cucumbers");
-		} else if (selection == 6) {
-			salad.getToppings().add("Carrots");
-		} else if (selection == 7) {
-			salad.getToppings().add("Mushrooms");
-		} else if (selection == 8) {
-			salad.getToppings().add("Feta Cheese");
-		} else if (selection == 9) {
-			salad.getToppings().add("Cheddar Cheese");
+		int selection;
+
+		do {
+			System.out.println(
+					"Select salad toppings (press 0 when finished):\n1 - Tomatoes\n2 - Onions\n3 - Bell Peppers\n4 - Olives\n5 - Cucumbers"
+							+ "\n6 - Carrots\n7 - Mushrooms\n8 - Feta Cheese (+$1)\n9 - Cheddar Cheese (+$1)");
+			selection = in.nextInt();
+			if (selection == 1) {
+				salad.getToppings().add("Tomatoes");
+			} else if (selection == 2) {
+				salad.getToppings().add("Onions");
+			} else if (selection == 3) {
+				salad.getToppings().add("Bell Peppers");
+			} else if (selection == 4) {
+				salad.getToppings().add("Olives");
+			} else if (selection == 5) {
+				salad.getToppings().add("Cucumbers");
+			} else if (selection == 6) {
+				salad.getToppings().add("Carrots");
+			} else if (selection == 7) {
+				salad.getToppings().add("Mushrooms");
+			} else if (selection == 8) {
+				salad.getToppings().add("Feta Cheese");
+			} else if (selection == 9) {
+				salad.getToppings().add("Cheddar Cheese");
+			} else if (selection == 0) {
+				System.out.println("Toppings have been added.");
+			} else {
+				throw new Exception("Please enter a valid selection.");
+			}
+		} while (selection != 0);
+		confirmSalad(salad);
+	}
+
+	public void confirmSalad(Salad salad) {
+		StringBuilder toppingsStr = new StringBuilder();
+
+		if (salad.getToppings().size() == 0) {
+			toppingsStr.append("Plain");
 		} else {
-			throw new Exception("Please enter a valid selection.");
+			for (int i = 0; i < salad.getToppings().size(); i++) {
+				toppingsStr.append(salad.getToppings().get(i).toLowerCase());
+
+				if (salad.getToppings().size() == 1) {
+					continue;
+				} else if (salad.getToppings().size() == 2 && i == 0) {
+					toppingsStr.append(" and ");
+				} else if (salad.getToppings().size() == 2 && i == 1) {
+					continue;
+				} else if (i == salad.getToppings().size() - 2) {
+					toppingsStr.append(", and ");
+				} else if (i != salad.getToppings().size() - 1) {
+					toppingsStr.append(", ");
+				}
+			}
 		}
+		
+		System.out.println("You have added a " + toppingsStr.toString().toLowerCase() + " salad with " + salad.getDressing().toLowerCase() + " dressing.");
 	}
 
 	public String getDressing() {
@@ -73,5 +107,4 @@ public class Salad extends MenuItem {
 		this.toppings = toppings;
 	}
 
-	
 }
