@@ -16,11 +16,10 @@ public class UserPrompts {
 
 	public static void askOrderItems(Order order, Scanner in) throws Exception {
 		boolean selectionError = false;
-		//need to bring user back to this menu after adding a menu item
-		//add condition if user clicks 0 when there are no items in their order - you must add at least one item to your order
+		int selection;
 		do {
 			System.out.println("Please select an item (press 0 when finished):\n1 - Pizzas\n2 - Burgers\n3 - Salads");
-			int selection = in.nextInt();
+			selection = in.nextInt();
 			if (selection == 1) {
 				Pizza pizza = new Pizza();
 				order.getOrderItems().add(pizza);
@@ -39,7 +38,7 @@ public class UserPrompts {
 				selectionError = true;
 				throw new Exception("Please choose a valid selection.");
 			}
-		} while (selectionError);
+		} while ((selectionError) || (selection != 0));
 	}
 
 }
