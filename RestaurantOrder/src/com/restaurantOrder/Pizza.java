@@ -9,7 +9,7 @@ public class Pizza extends MenuItem {
 	private ArrayList<String> toppings = new ArrayList<String>();
 	private String crust;
 
-	public void showPizzaOptions(Order order, Pizza pizza, Scanner in) throws Exception {
+	public void showPizzaOptions(Pizza pizza, Scanner in) throws Exception {
 		choosePizzaSize(pizza, in);
 		choosePizzaCrust(pizza, in);
 		choosePizzaToppings(pizza, in);
@@ -75,7 +75,7 @@ public class Pizza extends MenuItem {
 		confirmPizza(pizza);
 	}
 
-	public Pizza confirmPizza(Pizza pizza) {
+	public void confirmPizza(Pizza pizza) {
 		StringBuilder toppingsStr = new StringBuilder();
 
 		for (int i = 0; i < pizza.getToppings().size(); i++) {
@@ -100,8 +100,6 @@ public class Pizza extends MenuItem {
 		pizza.setDescription(desc);
 
 		System.out.println("You have added " + desc + " to your order.");
-		
-		return pizza;
 	}
 
 	public String getSize() {
