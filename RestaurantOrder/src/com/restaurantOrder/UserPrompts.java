@@ -23,7 +23,8 @@ public class UserPrompts {
 			int selection = in.nextInt();
 			if (selection == 1) {
 				Pizza pizza = new Pizza();
-				pizza.showPizzaOptions(order, pizza, in);
+				order.getOrderItems().add(pizza);
+				pizza.showPizzaOptions(pizza, in);
 			} else if (selection == 2) {
 				Burger burger = new Burger();
 				order.getOrderItems().add(burger);
