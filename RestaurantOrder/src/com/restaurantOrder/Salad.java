@@ -1,10 +1,12 @@
 package com.restaurantOrder;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Salad extends MenuItem {
 
+	private final BigDecimal BASE_PRICE = new BigDecimal(6);
 	private ArrayList<String> toppings = new ArrayList<String>();
 	private String dressing;
 
@@ -108,6 +110,10 @@ public class Salad extends MenuItem {
 
 	public void setToppings(ArrayList<String> toppings) {
 		this.toppings = toppings;
+	}
+
+	public BigDecimal getBASE_PRICE() {
+		return BASE_PRICE;
 	}
 
 }

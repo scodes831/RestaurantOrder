@@ -1,10 +1,11 @@
 package com.restaurantOrder;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Burger extends MenuItem {
-
+	private final BigDecimal BASE_PRICE = new BigDecimal(6);
 	private String cookingPreference;
 	private ArrayList<String> toppings = new ArrayList<String>();
 	private String bunType;
@@ -131,6 +132,10 @@ public class Burger extends MenuItem {
 
 	public void setBunType(String bunType) {
 		this.bunType = bunType;
+	}
+
+	public BigDecimal getBASE_PRICE() {
+		return BASE_PRICE;
 	}
 
 }
