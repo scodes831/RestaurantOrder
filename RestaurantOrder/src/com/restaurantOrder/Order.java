@@ -12,7 +12,7 @@ public class Order {
 	private LocalTime orderTime;
 	private String orderedBy;
 	private String orderType;
-	private ArrayList<MenuItem> orderItems;
+	private ArrayList<MenuItem> orderItems = new ArrayList<MenuItem>();
 
 	private BigDecimal orderSubTotal;
 	private BigDecimal orderTip;
