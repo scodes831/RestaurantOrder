@@ -100,8 +100,9 @@ public class Pizza extends MenuItem {
 				+ " crust pizza with " + toppingsStr.toString());
 
 		pizza.setDescription(desc);
-		System.out.println("You have added " + desc + " to your order.");
 		pizza.calculatePizzaPrice(pizza);
+		System.out.println("You have added " + desc + " to your order. Price: $" + pizza.getPrice());
+
 	}
 
 	public void calculatePizzaPrice(Pizza pizza) {
