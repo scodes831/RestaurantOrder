@@ -1,6 +1,7 @@
 package com.restaurantOrder;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -46,6 +47,12 @@ public class Order {
 		}
 		
 		order.setOrderSubTotal(price);
+	}
+	
+	public void calculateOrderTip(Order order, BigDecimal tipPercentage) {
+		BigDecimal tipAmount = order.getOrderSubTotal().multiply(tipPercentage);
+		BigDecimal roundedTipAmount = tipAmount.setScale(2, RoundingMode.CEILING);
+		order.setOrderTip(roundedTipAmount);
 	}
 
 	public int getOrderNumber() {
