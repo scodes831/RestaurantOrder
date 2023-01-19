@@ -65,7 +65,7 @@ public class UserPrompts {
 
 		} while (selectionError);
 		
-		System.out.println("you have selected a tip of " + order.getOrderTip());
+		System.out.println("You have added a tip of " + order.getOrderTip() + ".");
 
 	}
 
