@@ -89,11 +89,30 @@ public class Salad extends MenuItem {
 				}
 			}
 		}
+
+		String desc = new String(toppingsStr.toString().toLowerCase() + " salad with "
+				+ salad.getDressing().toLowerCase() + " dressing.");
 		
-		String desc = new String(toppingsStr.toString().toLowerCase() + " salad with " + salad.getDressing().toLowerCase() + " dressing.");
 		salad.setDescription(desc);
-		
-		System.out.println("You have added a " + desc);
+		salad.calculateSaladPrice(salad);
+
+		System.out.println("You have added a " + desc + ". Price: $" + salad.getPrice());
+	}
+
+	public void calculateSaladPrice(Salad salad) {
+
+		BigDecimal price = getBASE_PRICE();
+
+		for (String topping : salad.getToppings()) {
+			if (topping.equals("Feta Cheese")) {
+				price = price.add(new BigDecimal(1));
+			} else if (topping.equals("Cheddar Cheese")) {
+				price = price.add(new BigDecimal(1));
+			}
+		}
+
+		salad.setPrice(price);
+
 	}
 
 	public String getDressing() {
