@@ -55,6 +55,12 @@ public class Order {
 		order.setOrderTip(roundedTipAmount);
 	}
 	
+	public void calculateOrderTotal(Order order) {
+		BigDecimal orderTotal = order.getOrderSubTotal().add(order.getOrderTip());
+		BigDecimal roundedOrderTotal = orderTotal.setScale(2, RoundingMode.CEILING);
+		order.setOrderTotal(roundedOrderTotal);
+	}
+	
 	public void showOrderReceipt(Order order) {
 		System.out.println("\n===========================================\n");
 		
