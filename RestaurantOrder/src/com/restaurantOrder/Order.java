@@ -37,6 +37,16 @@ public class Order {
 		int orderNumber = Integer.parseInt(str.toString());
 		return orderNumber;
 	}
+	
+	public void calculateOrderSubTotal(Order order) {
+		BigDecimal price = new BigDecimal(0);
+		
+		for (MenuItem item : order.getOrderItems()) {
+			price = price.add(item.getPrice());
+		}
+		
+		order.setOrderSubTotal(price);
+	}
 
 	public int getOrderNumber() {
 		return orderNumber;
