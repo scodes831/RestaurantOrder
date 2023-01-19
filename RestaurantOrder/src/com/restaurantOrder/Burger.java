@@ -20,7 +20,7 @@ public class Burger extends MenuItem {
 		int selection;
 		do {
 			System.out.println(
-					"Select burger toppings (press 0 when finished):\n1 - Ketchup\n2 - Mustard\n3 - Mayo\n4 - American Cheese\n5 - Swiss Cheese"
+					"Select burger toppings (press 0 when finished):\n1 - Ketchup\n2 - Mustard\n3 - Mayo\n4 - American Cheese (+$1)\n5 - Swiss Cheese + ($1)"
 							+ "\n6 - Onion\n7 - Pickles\n8 - Tomato");
 			selection = in.nextInt();
 			if (selection == 1) {
@@ -77,8 +77,25 @@ public class Burger extends MenuItem {
 		String desc = new String(toppingsStr.toString().toLowerCase() + " burger on a "
 				+ burger.getBunType().toLowerCase() + " bun, cooked to " + burger.getCookingPreference().toLowerCase());
 		burger.setDescription(desc);
+		burger.calculateBurgerPrice(burger);
 
-		System.out.println("You have added a " + desc);
+		System.out.println("You have added a " + desc + ". Price: $");
+	}
+	
+	public void calculateBurgerPrice(Burger burger) {
+
+		BigDecimal price = getBASE_PRICE();
+
+		for (String topping : burger.getToppings()) {
+			if (topping.equals("American Cheese")) {
+				price = price.add(new BigDecimal(1));
+			} else if (topping.equals("Swiss Cheese")) {
+				price = price.add(new BigDecimal(1));
+			}
+		}
+
+		burger.setPrice(price);
+
 	}
 
 	private void chooseBun(Burger burger, Scanner in) throws Exception {
