@@ -1,6 +1,7 @@
 package com.restaurantOrder.tests;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -97,6 +98,23 @@ class Tests {
 		
 		order2.calculateOrderSubTotal(order2);
 		Assert.assertEquals(new BigDecimal(14), order2.getOrderSubTotal());
+	}
+	
+	@Test
+	void doesOrderTipEqual3() {
+		Order order = new Order();
+		order.setOrderSubTotal(new BigDecimal(20));
+		order.calculateOrderTip(order, new BigDecimal(.15));
+		Assert.assertEquals(new BigDecimal(3).setScale(2, RoundingMode.CEILING), order.getOrderTip());
+		
+	}
+	
+	@Test
+	void doesOrderTipEqual0() {
+		Order order = new Order();
+		order.setOrderSubTotal(new BigDecimal(20));
+		order.calculateOrderTip(order, new BigDecimal(0));
+		Assert.assertEquals(new BigDecimal(0).setScale(2, RoundingMode.CEILING), order.getOrderTip());
 		
 	}
 	
