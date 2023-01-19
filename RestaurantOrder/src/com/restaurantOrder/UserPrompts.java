@@ -1,5 +1,6 @@
 package com.restaurantOrder;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserPrompts {
@@ -39,6 +40,33 @@ public class UserPrompts {
 				throw new Exception("Please choose a valid selection.");
 			}
 		} while ((selectionError) || (selection != 0));
+	}
+
+	public static void askForTip(Order order, Scanner in) throws Exception {
+		int selection;
+		boolean selectionError = false;
+
+		do {
+			System.out.println("Your subtotal is $" + order.getOrderSubTotal()
+					+ ". Would you like to leave a tip?\n1 - 15%\n2 - 18%\n3 - 20%\n4 - No Tip");
+			selection = in.nextInt();
+			if (selection == 1) {
+				order.calculateOrderTip(order,  new BigDecimal(.15));
+			} else if (selection == 2) {
+				order.calculateOrderTip(order,  new BigDecimal(.18));
+			} else if (selection == 3) {
+				order.calculateOrderTip(order,  new BigDecimal(.2));
+			} else if (selection == 4) {
+				order.calculateOrderTip(order,  new BigDecimal(0));
+			} else {
+				selectionError = true;
+				throw new Exception("Please choose a valid selection.");
+			}
+
+		} while (selectionError);
+		
+		System.out.println("you have selected a tip of " + order.getOrderTip());
+
 	}
 
 }
