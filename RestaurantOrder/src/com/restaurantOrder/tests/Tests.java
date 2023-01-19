@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import com.restaurantOrder.Burger;
+import com.restaurantOrder.MenuItem;
 import com.restaurantOrder.Order;
 import com.restaurantOrder.Pizza;
 import com.restaurantOrder.Salad;
@@ -25,7 +26,6 @@ class Tests {
 		pizza1.setSize("Small");
 		pizza1.getToppings().add("Cheese");
 		pizza1.calculatePizzaPrice(pizza1);
-		System.out.println(pizza1.getPrice());
 		Assert.assertEquals(new BigDecimal(5), pizza1.getPrice());
 	}
 	
@@ -80,4 +80,24 @@ class Tests {
 		burger2.calculateBurgerPrice(burger2);
 		Assert.assertEquals(new BigDecimal(6), burger2.getPrice());		
 	}
+	
+	@Test
+	void doesOrderSubTotalEqual14() {
+		Order order2 = new Order();
+		Pizza pizza = new Pizza();
+		order2.getOrderItems().add(pizza);
+		pizza.setSize("Medium");
+		pizza.getToppings().add("Cheese"); //$7
+		pizza.calculatePizzaPrice(pizza);
+		
+		Burger burger = new Burger();
+		order2.getOrderItems().add(burger);
+		burger.getToppings().add("American Cheese"); //$7
+		burger.calculateBurgerPrice(burger);
+		
+		order2.calculateOrderSubTotal(order2);
+		Assert.assertEquals(new BigDecimal(14), order2.getOrderSubTotal());
+		
+	}
+	
  }
