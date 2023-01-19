@@ -54,6 +54,27 @@ public class Order {
 		BigDecimal roundedTipAmount = tipAmount.setScale(2, RoundingMode.CEILING);
 		order.setOrderTip(roundedTipAmount);
 	}
+	
+	public void showOrderReceipt(Order order) {
+		System.out.println("\n===========================================\n");
+		
+		System.out.println("Order Number: " + order.getOrderNumber());
+		System.out.println("Order Date: " + order.getOrderDate());
+		System.out.println("Order Time: " + order.getOrderTime());
+		System.out.println("\nOrder Type: " + order.getOrderType());
+		
+		System.out.println("\nItems Ordered: " + order.getOrderItems().size());
+		
+		for (MenuItem item : order.getOrderItems()) {
+			System.out.println("\n" + item.getDescription() + " " + item.getPrice());
+		}
+		
+		System.out.println("\nSubtotal: " + order.getOrderSubTotal());
+		System.out.println("Tip Amount: " + order.getOrderTip());
+		System.out.println("\nOrder Total: " + order.getOrderTotal());
+		System.out.println("\n===========================================\n");
+		
+	}
 
 	public int getOrderNumber() {
 		return orderNumber;
@@ -126,5 +147,7 @@ public class Order {
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
 	}
+
+	
 
 }
