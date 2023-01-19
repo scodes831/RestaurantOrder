@@ -73,7 +73,7 @@ public class Pizza extends MenuItem {
 				throw new Exception("Please enter a valid selection.");
 			}
 		} while ((selection != 0) || (pizza.getToppings().size() < 1));
-		
+
 		confirmPizza(pizza);
 	}
 
@@ -82,7 +82,7 @@ public class Pizza extends MenuItem {
 
 		for (int i = 0; i < pizza.getToppings().size(); i++) {
 			toppingsStr.append(pizza.getToppings().get(i).toLowerCase());
-			
+
 			if (pizza.getToppings().size() == 1) {
 				continue;
 			} else if (pizza.getToppings().size() == 2 && i == 0) {
@@ -95,13 +95,40 @@ public class Pizza extends MenuItem {
 				toppingsStr.append(", ");
 			}
 		}
-		
+
 		String desc = new String(pizza.getSize().toLowerCase() + " " + pizza.getCrust().toLowerCase()
 				+ " crust pizza with " + toppingsStr.toString());
-		
-		pizza.setDescription(desc);
 
+		pizza.setDescription(desc);
 		System.out.println("You have added " + desc + " to your order.");
+		pizza.calculatePizzaPrice(pizza);
+	}
+
+	public void calculatePizzaPrice(Pizza pizza) {
+
+		BigDecimal price = getBASE_PRICE();
+
+		if (pizza.getSize().equals("Medium")) {
+			System.out.println("medium pizza +2");
+			price = price.add(new BigDecimal(2));
+		} else if (pizza.getSize().equals("Large")) {
+			System.out.println("large pizza +5");
+			price = price.add(new BigDecimal(5));
+		}
+
+		for (String topping : pizza.getToppings()) {
+			if (topping.equals("Pepperoni")) {
+				price = price.add(new BigDecimal(2));
+			} else if (topping.equals("Sausage")) {
+				price = price.add(new BigDecimal(2));
+			} else if (topping.equals("Chicken")) {
+				price = price.add(new BigDecimal(2));
+			} else if (topping.equals("Extra Cheese")) {
+				price = price.add(new BigDecimal(1));
+			}
+		}
+		pizza.setPrice(price);
+
 	}
 
 	public String getSize() {
