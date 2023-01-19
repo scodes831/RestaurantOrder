@@ -110,10 +110,8 @@ public class Pizza extends MenuItem {
 		BigDecimal price = getBASE_PRICE();
 
 		if (pizza.getSize().equals("Medium")) {
-			System.out.println("medium pizza +2");
 			price = price.add(new BigDecimal(2));
 		} else if (pizza.getSize().equals("Large")) {
-			System.out.println("large pizza +5");
 			price = price.add(new BigDecimal(5));
 		}
 
