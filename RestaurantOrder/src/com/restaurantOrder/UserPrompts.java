@@ -69,4 +69,24 @@ public class UserPrompts {
 
 	}
 
+	public static void askToViewReceipt(Order order, Scanner in) throws Exception {
+		int selection;
+		boolean selectionError = false;
+		
+		do {
+			System.out.println("Would you like to view your receipt?\n1 - Yes\n2 - No");
+			selection = in.nextInt();
+			if (selection == 1) {
+				System.out.println("Printing your receipt...");
+				order.showOrderReceipt(order);
+			} else if (selection == 2) {
+				System.out.println("Ok, thank you for your order #" + order.getOrderNumber() + ". Have a great day!");
+			} else {
+				selectionError = true;
+				throw new Exception("Please choose a valid selection.");
+			}
+			
+		} while (selectionError);
+	}
+
 }
