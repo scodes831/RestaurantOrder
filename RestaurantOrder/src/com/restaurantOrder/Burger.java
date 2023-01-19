@@ -79,7 +79,7 @@ public class Burger extends MenuItem {
 		burger.setDescription(desc);
 		burger.calculateBurgerPrice(burger);
 
-		System.out.println("You have added a " + desc + ". Price: $");
+		System.out.println("You have added a " + desc + ". Price: $" + burger.getPrice());
 	}
 	
 	public void calculateBurgerPrice(Burger burger) {
