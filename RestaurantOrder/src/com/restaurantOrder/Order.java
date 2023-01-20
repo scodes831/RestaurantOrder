@@ -46,7 +46,8 @@ public class Order {
 			price = price.add(item.getPrice());
 		}
 		
-		order.setOrderSubTotal(price);
+		BigDecimal roundedPrice = price.setScale(2, RoundingMode.HALF_UP);
+		order.setOrderSubTotal(roundedPrice);
 	}
 	
 	public void calculateOrderTip(Order order, BigDecimal tipPercentage) {
