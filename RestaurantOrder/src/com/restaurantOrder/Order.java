@@ -75,9 +75,9 @@ public class Order {
 			System.out.println("\n" + item.getDescription() + " " + item.getPrice());
 		}
 		
-		System.out.println("\nSubtotal: " + order.getOrderSubTotal());
-		System.out.println("Tip Amount: " + order.getOrderTip());
-		System.out.println("\nOrder Total: " + order.getOrderTotal());
+		System.out.println("\nSubtotal: $" + order.getOrderSubTotal());
+		System.out.println("Tip Amount: $" + order.getOrderTip());
+		System.out.println("\nOrder Total: $" + order.getOrderTotal());
 		System.out.println("\n===========================================\n");
 		
 	}
