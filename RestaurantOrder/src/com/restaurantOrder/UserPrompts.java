@@ -19,7 +19,8 @@ public class UserPrompts {
 		boolean selectionError = false;
 		int selection;
 		do {
-			System.out.println("Please select an item (press 0 when finished):\n1 - Pizzas\n2 - Burgers\n3 - Salads");
+			System.out.println(
+					"Please select an item (press 0 when finished):\n1 - Pizzas....starting at $5\n2 - Burgers...starting at $6\n3 - Salads....starting at $6");
 			selection = in.nextInt();
 			if (selection == 1) {
 				Pizza pizza = new Pizza();
@@ -51,28 +52,28 @@ public class UserPrompts {
 					+ ". Would you like to leave a tip?\n1 - 15%\n2 - 18%\n3 - 20%\n4 - No Tip");
 			selection = in.nextInt();
 			if (selection == 1) {
-				order.calculateOrderTip(order,  new BigDecimal(.15));
+				order.calculateOrderTip(order, new BigDecimal(.15));
 			} else if (selection == 2) {
-				order.calculateOrderTip(order,  new BigDecimal(.18));
+				order.calculateOrderTip(order, new BigDecimal(.18));
 			} else if (selection == 3) {
-				order.calculateOrderTip(order,  new BigDecimal(.2));
+				order.calculateOrderTip(order, new BigDecimal(.2));
 			} else if (selection == 4) {
-				order.calculateOrderTip(order,  new BigDecimal(0));
+				order.calculateOrderTip(order, new BigDecimal(0));
 			} else {
 				selectionError = true;
 				throw new Exception("Please choose a valid selection.");
 			}
 
 		} while (selectionError);
-		
-		System.out.println("You have added a tip of " + order.getOrderTip() + ".");
+
+		System.out.println("You have added a tip of $" + order.getOrderTip() + ".");
 
 	}
 
 	public static void askToViewReceipt(Order order, Scanner in) throws Exception {
 		int selection;
 		boolean selectionError = false;
-		
+
 		do {
 			System.out.println("Would you like to view your receipt?\n1 - Yes\n2 - No");
 			selection = in.nextInt();
@@ -85,7 +86,7 @@ public class UserPrompts {
 				selectionError = true;
 				throw new Exception("Please choose a valid selection.");
 			}
-			
+
 		} while (selectionError);
 	}
 
