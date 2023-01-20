@@ -51,13 +51,13 @@ public class Order {
 	
 	public void calculateOrderTip(Order order, BigDecimal tipPercentage) {
 		BigDecimal tipAmount = order.getOrderSubTotal().multiply(tipPercentage);
-		BigDecimal roundedTipAmount = tipAmount.setScale(2, RoundingMode.CEILING);
+		BigDecimal roundedTipAmount = tipAmount.setScale(2, RoundingMode.HALF_UP);
 		order.setOrderTip(roundedTipAmount);
 	}
 	
 	public void calculateOrderTotal(Order order) {
 		BigDecimal orderTotal = order.getOrderSubTotal().add(order.getOrderTip());
-		BigDecimal roundedOrderTotal = orderTotal.setScale(2, RoundingMode.CEILING);
+		BigDecimal roundedOrderTotal = orderTotal.setScale(2, RoundingMode.HALF_UP);
 		order.setOrderTotal(roundedOrderTotal);
 	}
 	
