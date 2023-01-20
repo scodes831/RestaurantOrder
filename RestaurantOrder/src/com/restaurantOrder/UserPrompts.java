@@ -67,7 +67,6 @@ public class UserPrompts {
 		} while (selectionError);
 
 		System.out.println("You have added a tip of $" + order.getOrderTip() + ".");
-
 	}
 
 	public static void askToViewReceipt(Order order, Scanner in) throws Exception {
@@ -89,5 +88,4 @@ public class UserPrompts {
 
 		} while (selectionError);
 	}
-
 }
