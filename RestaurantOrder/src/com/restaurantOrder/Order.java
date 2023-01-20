@@ -73,7 +73,7 @@ public class Order {
 		System.out.println("\nItems Ordered: " + order.getOrderItems().size());
 		
 		for (MenuItem item : order.getOrderItems()) {
-			System.out.println("\n" + item.getDescription() + " " + item.getPrice());
+			System.out.println("\n" + item.getDescription() + " $" + item.getPrice());
 		}
 		
 		System.out.println("\nSubtotal: $" + order.getOrderSubTotal());
