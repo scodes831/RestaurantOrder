@@ -17,5 +17,4 @@ public class Main {
 		order.calculateOrderTotal(order);
 		UserPrompts.askToViewReceipt(order, in);
 	}
-
 }
