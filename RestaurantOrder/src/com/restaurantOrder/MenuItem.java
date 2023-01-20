@@ -6,8 +6,7 @@ public abstract class MenuItem {
 
 	private BigDecimal price;
 	private String description;
-	private String specialInstructions;
-
+	
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -22,14 +21,6 @@ public abstract class MenuItem {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getSpecialInstructions() {
-		return specialInstructions;
-	}
-
-	public void setSpecialInstructions(String specialInstructions) {
-		this.specialInstructions = specialInstructions;
 	}
 
 }
