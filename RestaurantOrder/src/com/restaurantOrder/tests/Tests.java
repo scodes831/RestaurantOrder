@@ -105,7 +105,7 @@ class Tests {
 		Order order = new Order();
 		order.setOrderSubTotal(new BigDecimal(20));
 		order.calculateOrderTip(order, new BigDecimal(.15));
-		Assert.assertEquals(new BigDecimal(3).setScale(2, RoundingMode.CEILING), order.getOrderTip());
+		Assert.assertEquals(new BigDecimal(3).setScale(2, RoundingMode.HALF_UP), order.getOrderTip());
 		
 	}
 	
@@ -114,8 +114,17 @@ class Tests {
 		Order order = new Order();
 		order.setOrderSubTotal(new BigDecimal(20));
 		order.calculateOrderTip(order, new BigDecimal(0));
-		Assert.assertEquals(new BigDecimal(0).setScale(2, RoundingMode.CEILING), order.getOrderTip());
+		Assert.assertEquals(new BigDecimal(0).setScale(2, RoundingMode.HALF_UP), order.getOrderTip());
 		
+	}
+	
+	@Test
+	void doesOrderTotalEqual() {
+		Order order = new Order();
+		order.setOrderSubTotal(new BigDecimal(30));
+		order.calculateOrderTip(order,  new BigDecimal(.20));
+		order.calculateOrderTotal(order);
+		Assert.assertEquals(new BigDecimal(36).setScale(2, RoundingMode.HALF_UP), order.getOrderTotal());
 	}
 	
  }
